@@ -58,7 +58,7 @@ public class CreatePostFragment extends BaseFragment {
             validate = true;
 
         }else{
-            tvDescriptionLayout.setError(null);
+            tvTitleLayout.setError(null);
         }
 
         return validate;
