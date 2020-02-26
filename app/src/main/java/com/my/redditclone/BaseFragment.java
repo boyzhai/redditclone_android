@@ -1,6 +1,8 @@
 package com.my.redditclone;
 
 
+import android.content.Intent;
+
 import androidx.fragment.app.Fragment;
 
 public class BaseFragment extends Fragment {
@@ -12,5 +14,10 @@ public class BaseFragment extends Fragment {
         }else{
             ((BaseActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
+    }
+
+
+    public void navigateActivity(Intent intent , boolean closePreviousActivity , boolean finishCurrentActivity ){
+        ((BaseActivity)getActivity()).navigateActivity(intent , closePreviousActivity ,finishCurrentActivity);
     }
 }

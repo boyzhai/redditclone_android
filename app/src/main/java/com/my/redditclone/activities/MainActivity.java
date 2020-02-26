@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initToolbar();
-        navigateFragment(new CreatePostFragment(), false , new TopicFragment().getClass().getName());
+        navigateFragment(new TopicFragment(), false , new TopicFragment().getClass().getName());
 
     }
 

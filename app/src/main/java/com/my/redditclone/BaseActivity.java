@@ -30,9 +30,9 @@ public class BaseActivity extends AppCompatActivity {
      * @param closePreviousActivity - remove all activity on the background
      * @param finishCurrentActivity - remove current activity on the background
      */
-
     public void navigateActivity(Intent intent , boolean closePreviousActivity , boolean finishCurrentActivity ){
         if(closePreviousActivity){
+
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
 

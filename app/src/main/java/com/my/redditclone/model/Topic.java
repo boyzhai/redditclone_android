@@ -1,68 +1,128 @@
+
 package com.my.redditclone.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class Topic {
-    String postId;
-    String postTitle;
-    String postDescription;
-    int postUpVote;
-    int postDownVote;
-    String postCreateDateTimeStamp;
-    String postEditDateTimeStamp;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
-    public String getPostId() {
-        return postId;
+public class Topic implements Comparable<Topic>{
+
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("title")
+    private String title;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("created_date")
+    private String createdDate;
+    @SerializedName("updated_date")
+    private String updatedDate;
+    @SerializedName("up_voted_count")
+    private Integer upVotedCount;
+    @SerializedName("down_voted_count")
+    private Integer downVotedCount;
+
+    private boolean addTopic;
+
+    public Topic() {
     }
 
-    public void setPostId(String postId) {
-        this.postId = postId;
+    public Topic(boolean addTopic) {
+        this.addTopic = addTopic;
     }
 
-    public String getPostTitle() {
-        return postTitle;
+    public boolean isAddTopic() {
+        return addTopic;
+    }
+    public void setAddTopic(boolean addTopic) {
+        this.addTopic = addTopic;
+    }
+    public Integer getId() {
+        return id;
     }
 
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getPostDescription() {
-        return postDescription;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPostDescription(String postDescription) {
-        this.postDescription = postDescription;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getPostUpVote() {
-        return postUpVote;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPostUpVote(int postUpVote) {
-        this.postUpVote = postUpVote;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getPostDownVote() {
-        return postDownVote;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setPostDownVote(int postDownVote) {
-        this.postDownVote = postDownVote;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public String getPostCreateDateTimeStamp() {
-        return postCreateDateTimeStamp;
+    public String getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setPostCreateDateTimeStamp(String postCreateDateTimeStamp) {
-        this.postCreateDateTimeStamp = postCreateDateTimeStamp;
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
-    public String getPostEditDateTimeStamp() {
-        return postEditDateTimeStamp;
+    public Integer getUpVotedCount() {
+        return upVotedCount;
     }
 
-    public void setPostEditDateTimeStamp(String postEditDateTimeStamp) {
-        this.postEditDateTimeStamp = postEditDateTimeStamp;
+    public void setUpVotedCount(Integer upVotedCount) {
+        this.upVotedCount = upVotedCount;
+    }
+
+    public Integer getDownVotedCount() {
+        return downVotedCount;
+    }
+
+    public void setDownVotedCount(Integer downVotedCount) {
+        this.downVotedCount = downVotedCount;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("id", id).append("title", title).append("description", description).append("createdDate", createdDate).append("updatedDate", updatedDate).append("upVotedCount", upVotedCount).append("downVotedCount", downVotedCount).toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(createdDate).append(description).append(id).append(updatedDate).append(title).append(upVotedCount).append(downVotedCount).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if ((other instanceof Topic) == false) {
+            return false;
+        }
+        Topic rhs = ((Topic) other);
+        return new EqualsBuilder().append(createdDate, rhs.createdDate).append(description, rhs.description).append(id, rhs.id).append(updatedDate, rhs.updatedDate).append(title, rhs.title).append(upVotedCount, rhs.upVotedCount).append(downVotedCount, rhs.downVotedCount).isEquals();
+    }
+
+    @Override
+    public int compareTo(Topic o) {
+        if(getUpVotedCount() == null || o.getUpVotedCount() == null){
+            return 0;
+        }
+            return getUpVotedCount().compareTo(o.getUpVotedCount());
     }
 }
