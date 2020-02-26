@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:clickable="true"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
@@ -30,8 +31,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="FFBE"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,63 +43,61 @@
                 android:id="@+id/tv_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
                 android:text="Final Fantasy Brave Exvius is a free-to-play mobile role-playing game developed by Alim and published by Square Enix for iOS and Android devices. A spinoff of the Final Fantasy series, the game marks as the first collaborative effort between Square Enix and Alim and draws elements from Alim's previous game, Brave Frontier.TextView"
-                app:layout_constraintBottom_toTopOf="@+id/btn_upvote"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
             <TextView
                 android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:text="1 min ago"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_title" />
+                android:textAlignment="textEnd"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_vote_point"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
+                app:layout_constraintStart_toEndOf="@+id/tv_vote_point"
+                app:layout_constraintTop_toTopOf="@+id/tv_vote_point" />
 
             <Button
                 android:id="@+id/btn_upvote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
                 android:text="Upvote"
-                app:icon="@android:drawable/btn_star"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:icon="@drawable/ic_arrow_upward_24px"
                 app:layout_constraintEnd_toStartOf="@+id/btn_downvote"
-                app:layout_constraintStart_toStartOf="@+id/tv_description" />
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
             <Button
                 android:id="@+id/btn_downvote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:text="Downvote"
-                app:icon="@android:drawable/btn_star"
+                app:icon="@drawable/ic_arrow_downward_24px"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_upvote"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
                 app:layout_constraintStart_toEndOf="@+id/btn_upvote"
                 app:layout_constraintTop_toTopOf="@+id/btn_upvote" />
 
             <TextView
                 android:id="@+id/tv_vote_point"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="1 vote"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-                app:layout_constraintStart_toEndOf="@+id/tv_title"
-                app:layout_constraintTop_toTopOf="@+id/tv_title" />
+                android:textAlignment="textStart"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_date"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/btn_upvote" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,7 +109,7 @@
         style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="@+id/cv_layout_card"

@@ -1,13 +1,113 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.my.redditclone.fragment.TopicDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Test2 2" />
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/tvTitleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_post_title"
+            android:inputType="textMultiLine"
+            android:enabled="false"
+            android:textColor="@color/colorBlack"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/tvDescriptionLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleLayout"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_post_description"
+            android:inputType="none"
+            android:enabled="false"
+            android:textColor="@color/colorBlack" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/tvCreatedDateLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvDescriptionLayout"
+        app:layout_constraintStart_toStartOf="@+id/tvDescriptionLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCreatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="Created Date"
+            android:inputType="none"
+            android:textColor="@color/colorBlack" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/tvUpdatedDateLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvCreatedDateLayout"
+        app:layout_constraintStart_toStartOf="@+id/tvCreatedDateLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreatedDateLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUpdatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Updated Date"
+            android:inputType="none"
+            android:enabled="false"
+            android:textColor="@color/colorBlack"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/tvTotalVPLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvUpdatedDateLayout"
+        app:layout_constraintStart_toStartOf="@+id/tvUpdatedDateLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpdatedDateLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_ttl_votepoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total Vote Points"
+            android:inputType="none"
+            android:enabled="false"
+            android:textColor="@color/colorBlack"
+         />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
