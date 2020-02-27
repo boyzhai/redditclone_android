@@ -147,11 +147,10 @@ public class CreatePostFragment extends BaseFragment {
             postDetail.put("id", index + 1);
             postDetail.put("title", edtTitle.getText().toString().trim());
             postDetail.put("description", edtDescription.getText().toString().trim());
-            postDetail.put("created_date", new Date());
-            postDetail.put("updated_date", new Date());
-            postDetail.put("up_voted_count", 0);
-            postDetail.put("down_voted_count", 0);
-            postDetailsList.put(postDetail);
+            postDetail.put("created_date", formatDate(new Date(),"dd/M/yyyy hh:mm:ss"));
+            postDetail.put("updated_date", formatDate(new Date(),"dd/M/yyyy hh:mm:ss"));
+            postDetail.put("vote_points_count", 0);
+                      postDetailsList.put(postDetail);
 
 
             /**

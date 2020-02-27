@@ -1,9 +1,8 @@
 
 package com.my.redditclone.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -20,26 +19,12 @@ public class Topic implements Comparable<Topic>{
     private String createdDate;
     @SerializedName("updated_date")
     private String updatedDate;
-    @SerializedName("up_voted_count")
+    @SerializedName("vote_points_count")
     private Integer upVotedCount;
-    @SerializedName("down_voted_count")
-    private Integer downVotedCount;
-
-    private boolean addTopic;
 
     public Topic() {
     }
 
-    public Topic(boolean addTopic) {
-        this.addTopic = addTopic;
-    }
-
-    public boolean isAddTopic() {
-        return addTopic;
-    }
-    public void setAddTopic(boolean addTopic) {
-        this.addTopic = addTopic;
-    }
     public Integer getId() {
         return id;
     }
@@ -88,22 +73,15 @@ public class Topic implements Comparable<Topic>{
         this.upVotedCount = upVotedCount;
     }
 
-    public Integer getDownVotedCount() {
-        return downVotedCount;
-    }
-
-    public void setDownVotedCount(Integer downVotedCount) {
-        this.downVotedCount = downVotedCount;
-    }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("title", title).append("description", description).append("createdDate", createdDate).append("updatedDate", updatedDate).append("upVotedCount", upVotedCount).append("downVotedCount", downVotedCount).toString();
+        return new ToStringBuilder(this).append("id", id).append("title", title).append("description", description).append("createdDate", createdDate).append("updatedDate", updatedDate).append("upVotedCount", upVotedCount).toString();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(createdDate).append(description).append(id).append(updatedDate).append(title).append(upVotedCount).append(downVotedCount).toHashCode();
+        return new HashCodeBuilder().append(createdDate).append(description).append(id).append(updatedDate).append(title).append(upVotedCount).toHashCode();
     }
 
     @Override
@@ -115,7 +93,7 @@ public class Topic implements Comparable<Topic>{
             return false;
         }
         Topic rhs = ((Topic) other);
-        return new EqualsBuilder().append(createdDate, rhs.createdDate).append(description, rhs.description).append(id, rhs.id).append(updatedDate, rhs.updatedDate).append(title, rhs.title).append(upVotedCount, rhs.upVotedCount).append(downVotedCount, rhs.downVotedCount).isEquals();
+        return new EqualsBuilder().append(createdDate, rhs.createdDate).append(description, rhs.description).append(id, rhs.id).append(updatedDate, rhs.updatedDate).append(title, rhs.title).append(upVotedCount, rhs.upVotedCount).isEquals();
     }
 
     @Override

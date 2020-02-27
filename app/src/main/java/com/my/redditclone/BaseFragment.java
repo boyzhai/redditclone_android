@@ -27,20 +27,26 @@ public class BaseFragment extends Fragment {
         ((BaseActivity)getActivity()).navigateActivity(intent , closePreviousActivity ,finishCurrentActivity);
     }
 
-    public String calculateTimeDifference(Date dateComment , Date dateToday ){
+    public String formatDate(Date date , String datePattern){
+
+            SimpleDateFormat simpleDateFormat =
+                    new SimpleDateFormat(datePattern);
+
+              return simpleDateFormat.format(date);
+
+    }
+
+
+    public String calculateTimeDifference(String dateComment , Date dateToday ){
         try {
             SimpleDateFormat simpleDateFormat =
                     new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
 
-            Date startDate = simpleDateFormat.parse(simpleDateFormat.format(dateComment));
+            Date startDate = simpleDateFormat.parse(dateComment);
             Date endDate = simpleDateFormat.parse(simpleDateFormat.format(dateToday));
 
             //milliseconds
             long different = endDate.getTime() - startDate.getTime();
-
-            System.out.println("startDate : " + startDate);
-            System.out.println("endDate : "+ endDate);
-            System.out.println("different : " + different);
 
             long secondsInMilli = 1000;
             long minutesInMilli = secondsInMilli * 60;
@@ -58,8 +64,6 @@ public class BaseFragment extends Fragment {
 
             long elapsedSeconds = different / secondsInMilli;
 
-            String timeDifference2 = elapsedDays +" days "+ elapsedHours + " hours "+ elapsedMinutes + " minutes "+ elapsedSeconds +  " seconds " ;
-
             StringBuilder timeDifference = new StringBuilder("");
 
             if(elapsedDays > 0){
@@ -76,8 +80,6 @@ public class BaseFragment extends Fragment {
                 }
             }
 
-
-            Log.i("different :",timeDifference.toString());
             return timeDifference.toString();
 
         }catch(ParseException e){

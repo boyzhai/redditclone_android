@@ -1,15 +1,12 @@
 package com.my.redditclone.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.my.redditclone.BaseActivity;
 import com.my.redditclone.R;
-import com.my.redditclone.fragment.CreatePostFragment;
 import com.my.redditclone.fragment.TopicFragment;
 
 public class MainActivity extends BaseActivity {

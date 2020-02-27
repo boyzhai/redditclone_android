@@ -23,7 +23,6 @@ import com.google.gson.reflect.TypeToken;
 import com.my.redditclone.BaseFragment;
 import com.my.redditclone.R;
 import com.my.redditclone.activities.MainActivity;
-import com.my.redditclone.helper.RecyclerTouchListener;
 import com.my.redditclone.model.Topic;
 import com.my.redditclone.utilities.Util;
 
@@ -31,9 +30,7 @@ import org.json.JSONArray;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -80,7 +77,7 @@ public class TopicFragment extends BaseFragment {
     private void initTopicList(){
         topicList.clear();
         if(Util.bundle.get("post_list") != null) {
-            Log.i("test", Util.bundle.get("post_list"));
+            Log.i("post list ", Util.bundle.get("post_list"));
             try {
                 JSONArray topicJSON = new JSONArray(Util.bundle.get("post_list"));
                 Gson gson = new Gson();
@@ -160,7 +157,7 @@ public class TopicFragment extends BaseFragment {
                 holder.cvPost.setVisibility(View.VISIBLE);
                 holder.tvTitle.setText(topic.getTitle());
                 holder.tvDescription.setText(topic.getDescription());
-                holder.tvDate.setText(calculateTimeDifference(new Date(topic.getCreatedDate()), new Date()));
+                holder.tvDate.setText(calculateTimeDifference(topic.getCreatedDate(), new Date()));
                 holder.tvVote.setText(Integer.toString(topic.getUpVotedCount()) + " points");
             }
 
@@ -174,7 +171,7 @@ public class TopicFragment extends BaseFragment {
                 vote++;
                 holder.tvVote.setText(Integer.toString(vote)+ " points");
                 topic.setUpVotedCount(vote);
-                topic.setUpdatedDate(new Date().toString());
+                topic.setUpdatedDate(formatDate(new Date(),"dd/M/yyyy hh:mm:ss"));
 
 
                 topicList.set(position , topic);
@@ -198,7 +195,7 @@ public class TopicFragment extends BaseFragment {
 
                 holder.tvVote.setText(Integer.toString(vote) + " points");
                 topic.setUpVotedCount(vote);
-                topic.setUpdatedDate(new Date().toString());
+                topic.setUpdatedDate(formatDate(new Date(),"dd/M/yyyy hh:mm:ss"));
                 topicList.set(position , topic);
                 Gson gson = new Gson();
                 JsonArray newTopicList = gson.toJsonTree(topicList).getAsJsonArray();

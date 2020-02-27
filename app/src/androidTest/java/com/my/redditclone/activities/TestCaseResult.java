@@ -119,7 +119,15 @@ public class TestCaseResult {
                                     2),
                             isDisplayed()));
             materialButton2.perform(click());
-
+            
+            ViewInteraction materialButton3 = onView(
+                    allOf(withId(android.R.id.button1), withText("Ok"),
+                            childAtPosition(
+                                    childAtPosition(
+                                            withId(R.id.buttonPanel),
+                                            0),
+                                    3)));
+            materialButton3.perform(scrollTo(), click());
 
 
         }
